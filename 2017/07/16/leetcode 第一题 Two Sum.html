@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>leetcode 第一题 Two Sum | 丁龙强的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="这是 leetcode 上算法的第一题，官方定位为简单题目，事实也是如此。题目地址 题目：给定一个整数数组，返回两个数字的返回索引，这样它们就可以添加到特定的目标。假设每个输入都只有一个结果，不会两次使用相同的元素。例如：1234Given nums = [2, 7, 11, 15], target = 9,Because nums[0] + nums[1] = 2 + 7 = 9,return">
+<meta name="keywords" content="算法,leetcode">
+<meta property="og:type" content="article">
+<meta property="og:title" content="leetcode 第一题 Two Sum">
+<meta property="og:url" content="http://DingLQ.github.io/2017/07/16/leetcode 第一题 Two Sum.html">
+<meta property="og:site_name" content="丁龙强的博客">
+<meta property="og:description" content="这是 leetcode 上算法的第一题，官方定位为简单题目，事实也是如此。题目地址 题目：给定一个整数数组，返回两个数字的返回索引，这样它们就可以添加到特定的目标。假设每个输入都只有一个结果，不会两次使用相同的元素。例如：1234Given nums = [2, 7, 11, 15], target = 9,Because nums[0] + nums[1] = 2 + 7 = 9,return">
+<meta property="og:updated_time" content="2017-07-15T18:52:27.312Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="leetcode 第一题 Two Sum">
+<meta name="twitter:description" content="这是 leetcode 上算法的第一题，官方定位为简单题目，事实也是如此。题目地址 题目：给定一个整数数组，返回两个数字的返回索引，这样它们就可以添加到特定的目标。假设每个输入都只有一个结果，不会两次使用相同的元素。例如：1234Given nums = [2, 7, 11, 15], target = 9,Because nums[0] + nums[1] = 2 + 7 = 9,return">
+  
+    <link rel="alternate" href="/atom.xml" title="丁龙强的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">丁龙强的博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://DingLQ.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-leetcode 第一题 Two Sum" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/07/16/leetcode 第一题 Two Sum.html" class="article-date">
+  <time datetime="2017-07-15T17:53:38.000Z" itemprop="datePublished">2017-07-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      leetcode 第一题 Two Sum
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这是 leetcode 上算法的第一题，官方定位为简单题目，事实也是如此。<a href="https://leetcode.com/problems/two-sum/" target="_blank" rel="external">题目地址</a></p>
+<p>题目：给定一个整数数组，返回两个数字的返回索引，这样它们就可以添加到特定的目标。假设每个输入都只有一个结果，不会两次使用相同的元素。例如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Given nums = [<span class="number">2</span>, <span class="number">7</span>, <span class="number">11</span>, <span class="number">15</span>], target = <span class="number">9</span>,</div><div class="line"></div><div class="line">Because nums[<span class="number">0</span>] + nums[<span class="number">1</span>] = <span class="number">2</span> + <span class="number">7</span> = <span class="number">9</span>,</div><div class="line"><span class="keyword">return</span> [<span class="number">0</span>, <span class="number">1</span>].</div></pre></td></tr></table></figure></p>
+<h2 id="解法一"><a href="#解法一" class="headerlink" title="解法一"></a>解法一</h2><hr>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 最简单的双重循环</span></div><div class="line"><span class="keyword">var</span> twoSum = <span class="function"><span class="keyword">function</span>(<span class="params">nums, target</span>) </span>&#123;</div><div class="line">   <span class="keyword">var</span> d =&#123;&#125;;</div><div class="line">    <span class="keyword">var</span> result = [];</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; nums.length; j++) &#123;</div><div class="line">          <span class="keyword">if</span> (nums[i] + nums[j] === target &amp;&amp; i !== j) &#123;</div><div class="line">             (i &lt; j) ? result.push(i, j) : result.push(j, i);</div><div class="line">             <span class="keyword">return</span> result;</div><div class="line">          &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> result;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>基本所有人都会，但是该方法算法复杂度为O(n<sup>2</sup>)，运行时间过长(246ms)</p>
+<h2 id="解法二"><a href="#解法二" class="headerlink" title="解法二"></a>解法二</h2><hr>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> twoSum = <span class="function"><span class="keyword">function</span>(<span class="params">nums, target</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> d =&#123;&#125;;</div><div class="line">    <span class="keyword">var</span> result = [];</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</div><div class="line">        <span class="keyword">var</span> a = target - nums[i] +<span class="string">''</span>;</div><div class="line">        <span class="keyword">var</span> t = &#123;&#125;;</div><div class="line">        d[a] = i;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> b = <span class="number">0</span>; b &lt; nums.length; b++) &#123;</div><div class="line">        <span class="keyword">var</span> c = nums[b]+<span class="string">''</span>;</div><div class="line">        <span class="keyword">if</span>(d[c] !== <span class="literal">undefined</span>)&#123;</div><div class="line">          <span class="keyword">var</span> x = d[c], y = nums.indexOf(nums[b]);</div><div class="line">          <span class="keyword">if</span> (x !== y)&#123;</div><div class="line">            (y &lt; x) ? result.push(y, x) : result.push(x, y);</div><div class="line">            <span class="keyword">return</span> result;   </div><div class="line">          &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> result;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>这种解法是用两个单独的循环，所以运行时间大大减少(116ms)。</p>
+<p>大概思路是先做一遍遍历,将数据以’目标值减去数组中的某个值 : 该值的索引’这样类似map的方式存储在对象d中，然后再做一次遍历根据是否是新对象的属性来判断有没有解。 这个解法是我对这道题目的思考过程，中间有很多多余的操作。</p>
+<h2 id="解法三"><a href="#解法三" class="headerlink" title="解法三"></a>解法三</h2><hr>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> twoSum = <span class="function"><span class="keyword">function</span>(<span class="params">nums, target</span>) </span>&#123;</div><div class="line"><span class="keyword">var</span> ans = [];</div><div class="line"><span class="keyword">var</span> exist = &#123;&#125;;</div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; nums.length; i++)&#123;</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span>(exist[target-nums[i]]) !== <span class="string">'undefined'</span>)&#123;</div><div class="line">        ans.push(exist[target-nums[i]]);</div><div class="line">        ans.push(i);</div><div class="line">    &#125;</div><div class="line">    exist[nums[i]] = i;</div><div class="line">&#125;</div><div class="line"><span class="keyword">return</span> ans;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>leetcode 上大佬的解法，运行时间（92ms），直接在一个循环中解决问题。</p>
+<p>大致思路，就是遍历数组，在exis对象中存入’值’：’索引’的属性，使用typeof 判断是否有符合条件的属性，有的话存入ans,最后返回ans。</p>
+<p>对于这个算法我本来想在ans.push(i)后加个 return ans，想这样不用把算法走完或许会再少点时间，但是时间反而多了一点。然后我又尝试用break，好像是减少了几ms，但是leetcode运行同样的算法时间都有变化，这个就算在误差内了。</p>
+<p>这道题目虽然不是很难，但是加深了我对javascript基础的认知，也感受到了用javascript写算法与java这种面向对象语言的区别。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://DingLQ.github.io/2017/07/16/leetcode 第一题 Two Sum.html" data-id="cj55ngr9r000134unxp5pulhu" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/07/11/CSS-Sticky-footers-布局.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">CSS Sticky footers 布局</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/css相关/" style="font-size: 10px;">css相关</a> <a href="/tags/css相关/" style="font-size: 10px;">css相关 </a> <a href="/tags/init/" style="font-size: 10px;">init</a> <a href="/tags/leetcode/" style="font-size: 10px;">leetcode</a> <a href="/tags/linux相关/" style="font-size: 10px;">linux相关</a> <a href="/tags/mongodb相关/" style="font-size: 10px;">mongodb相关</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/页面布局/" style="font-size: 10px;">页面布局</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/07/16/leetcode 第一题 Two Sum.html">leetcode 第一题 Two Sum</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/11/CSS-Sticky-footers-布局.html">CSS Sticky footers 布局</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/11/css-实现手机自适应高度.html">css 实现手机自适应高度</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/11/mongodb3-4-在-centos-7-上部署.html">mongodb3.4 在 centos 7 上部署</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/11/Linux-简单命令.html">Linux 简单命令</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Ding<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
